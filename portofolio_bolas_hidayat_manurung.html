@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portofolio - Bolas Hidayat Manurung</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        navy: {
+                            DEFAULT: '#0F172A',
+                            dark: '#090D16',
+                            light: '#1E293B',
+                            accent: '#1E3A8A',
+                        },
+                        gold: {
+                            DEFAULT: '#D97706',
+                            hover: '#B45309',
+                            light: '#FEF3C7',
+                            border: '#FCD34D'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(8px);
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 antialiased selection:bg-gold selection:text-white">
+
+    <!-- Toast Notification Overlay -->
+    <div id="toast" class="fixed bottom-6 right-6 z-50 bg-navy text-white px-5 py-3 rounded-xl shadow-2xl border border-gold/40 transform translate-y-20 opacity-0 transition-all duration-300 flex items-center gap-3">
+        <svg class="w-5 h-5 text-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+        </svg>
+        <span id="toast-message" class="text-sm font-medium">Teks berhasil disalin!</span>
+    </div>
+
+    <!-- Navigation Bar -->
+    <header class="fixed top-0 left-0 right-0 bg-white/90 backdrop-blur-md border-b border-slate-200/80 z-40">
+        <div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#beranda" class="text-2xl font-extrabold tracking-tight text-navy">
+                BHM<span class="text-gold">.</span>
+            </a>
+            
+            <!-- Desktop Links -->
+            <nav class="hidden md:flex items-center space-x-8 text-sm font-semibold text-slate-600">
+                <a href="#tentang" class="hover:text-gold transition-colors">Tentang Saya</a>
+                <a href="#pengalaman" class="hover:text-gold transition-colors">Pengalaman</a>
+                <a href="#keahlian" class="hover:text-gold transition-colors">Keahlian</a>
+                <a href="#kontak" class="hover:text-gold transition-colors">Kontak</a>
+            </nav>
+
+            <a href="#kontak" class="hidden sm:inline-flex items-center justify-center px-5 py-2.5 text-sm font-semibold text-white bg-navy rounded-full hover:bg-navy-accent transition-all shadow-sm shadow-navy/20 hover:shadow-md">
+                Hubungi Saya
+            </a>
+
+            <!-- Mobile Menu Button -->
+            <button id="menu-btn" class="md:hidden text-navy p-2 rounded-lg hover:bg-slate-100 focus:outline-none" aria-label="Toggle Navigation">
+                <svg id="menu-icon-open" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                </svg>
+                <svg id="menu-icon-close" class="w-6 h-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                </svg>
+            </button>
+        </div>
+
+        <!-- Mobile Navigation Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-b border-slate-200 px-6 py-4 space-y-3 transition-all">
+            <a href="#tentang" class="block text-slate-600 font-medium hover:text-gold py-1">Tentang Saya</a>
+            <a href="#pengalaman" class="block text-slate-600 font-medium hover:text-gold py-1">Pengalaman</a>
+            <a href="#keahlian" class="block text-slate-600 font-medium hover:text-gold py-1">Keahlian</a>
+            <a href="#kontak" class="block text-slate-600 font-medium hover:text-gold py-1">Kontak</a>
+            <a href="#kontak" class="block text-center w-full mt-3 px-5 py-2.5 text-sm font-semibold text-white bg-navy rounded-xl">Hubungi Saya</a>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section id="beranda" class="pt-32 pb-20 md:pt-44 md:pb-32 px-6 bg-gradient-to-b from-slate-100/70 to-slate-50">
+            <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-12 gap-12 items-center">
+                <div class="md:col-span-7 space-y-6 text-center md:text-left">
+                    <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-gold-light border border-gold-border text-gold font-semibold text-xs tracking-wide uppercase">
+                        <span class="w-2 h-2 rounded-full bg-gold animate-pulse"></span>
+                        Spesialis Komunikasi Publik & Humas
+                    </div>
+                    
+                    <h1 class="text-4xl sm:text-5xl md:text-6xl font-extrabold text-navy tracking-tight leading-tight">
+                        Halo, Saya <br class="hidden sm:block">
+                        <span class="text-transparent bg-clip-text bg-gradient-to-r from-navy via-navy-accent to-gold">
+                            Bolas Hidayat Manurung
+                        </span>
+                    </h1>
+                    
+                    <p class="text-lg md:text-xl text-slate-600 max-w-2xl font-normal leading-relaxed">
+                        "Menghubungkan Kebijakan Publik dengan Masyarakat Melalui Komunikasi Strategis, Kehumasan Pemerintah, dan Analisis Teks Kebahasaan."
+                    </p>
+                    
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center md:justify-start pt-2">
+                        <a href="#pengalaman" class="px-7 py-3.5 bg-navy text-white font-semibold rounded-xl hover:bg-navy-accent shadow-lg shadow-navy/20 transition-all text-center flex items-center justify-center gap-2">
+                            <span>Lihat Karya & Pengalaman</span>
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                        </a>
+                        <a href="#kontak" class="px-7 py-3.5 bg-white border-2 border-slate-200 text-navy font-semibold rounded-xl hover:border-gold hover:text-gold transition-all text-center">
+                            Kontak Langsung
+                        </a>
+                    </div>
+                </div>
+
+                <div class="md:col-span-5 flex justify-center">
+                    <div class="relative w-64 h-64 sm:w-80 sm:h-80">
+                        <div class="absolute inset-0 rounded-3xl bg-gradient-to-tr from-navy to-gold opacity-15 blur-2xl"></div>
+                        <div class="relative w-full h-full bg-white p-3 rounded-3xl border border-slate-200 shadow-xl overflow-hidden">
+                            <img src="https://ui-avatars.com/api/?name=Bolas+Hidayat+Manurung&background=0f172a&color=d97706&size=512&font-size=0.33" 
+                                 alt="Bolas Hidayat Manurung" 
+                                 class="w-full h-full object-cover rounded-2xl">
+                            <div class="absolute bottom-5 left-5 right-5 bg-navy/95 backdrop-blur-md text-white p-3 rounded-xl text-xs flex items-center justify-between border border-gold/30">
+                                <div>
+                                    <p class="font-bold text-gold">Lulusan Cum Laude</p>
+                                    <p class="text-slate-300">IPK 3.80 / 4.00</p>
+                                </div>
+                                <span class="bg-gold/20 text-gold px-2 py-1 rounded-md font-semibold">2026</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Me Section -->
+        <section id="tentang" class="py-20 bg-white border-y border-slate-200/60 px-6">
+            <div class="max-w-5xl mx-auto space-y-12">
+                <div class="text-center space-y-3">
+                    <h2 class="text-3xl md:text-4xl font-bold text-navy">Tentang Saya</h2>
+                    <div class="w-16 h-1 bg-gold mx-auto rounded-full"></div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-12 gap-8 items-stretch">
+                    <!-- Bio Text -->
+                    <div class="md:col-span-7 space-y-5 text-slate-600 leading-relaxed text-base flex flex-col justify-center">
+                        <p>
+                            Saya adalah Sarjana <strong>Sastra Indonesia</strong> dari <strong>Universitas Negeri Medan</strong> yang lulus dengan predikat <i>Cum Laude</i> (Dengan Pujian, IPK 3.80/4.00). Memiliki minat mendalam pada kehumasan pemerintah (*government public relations*), analisis kebahasaan, dan penyusunan informasi publik.
+                        </p>
+                        <p>
+                            Melalui pengalaman di Dinas Kominfo Kota Medan, saya terbiasa mengelola sistem Pejabat Pengelola Informasi dan Dokumentasi (PPID), menyusun materi komunikasi publik yang akurat, serta mendokumentasikan kegiatan instansi secara akuntabel.
+                        </p>
+                        <p>
+                            Didukung dengan kemampuan adaptasi dan komunikasi interpersonal yang kuat, saya siap berkontribusi dalam mengoptimalkan diseminasi informasi strategis.
+                        </p>
+                    </div>
+
+                    <!-- Quick Stats & Education Box -->
+                    <div class="md:col-span-5 bg-slate-50 p-6 rounded-2xl border border-slate-200 shadow-sm space-y-5 flex flex-col justify-between">
+                        <div>
+                            <span class="text-xs font-bold uppercase text-gold tracking-wider block mb-2">Pendidikan Resmi</span>
+                            <h3 class="text-lg font-bold text-navy">S1 Sastra Indonesia</h3>
+                            <p class="text-sm font-medium text-slate-600">Universitas Negeri Medan</p>
+                            <p class="text-xs text-slate-400 mt-1">Periode Studi: 2022 – 2026</p>
+                        </div>
+
+                        <div class="border-t border-slate-200 pt-4 space-y-3">
+                            <div class="flex justify-between items-center text-sm">
+                                <span class="text-slate-600">Predikat Kelulusan:</span>
+                                <span class="font-bold text-navy bg-gold-light text-gold px-2.5 py-0.5 rounded-full text-xs">Cum Laude</span>
+                            </div>
+                            <div class="flex justify-between items-center text-sm">
+                                <span class="text-slate-600">Indeks Prestasi (IPK):</span>
+                                <span class="font-extrabold text-navy text-base">3.80 / 4.00</span>
+                            </div>
+                            <div class="flex justify-between items-center text-sm">
+                                <span class="text-slate-600">Sertifikasi Bahasa:</span>
+                                <span class="font-semibold text-slate-700 text-xs">UKBI Certified (2026)</span>
+                            </div>
+                        </div>
+
+                        <div class="bg-navy p-3.5 rounded-xl text-white text-xs flex items-center gap-3">
+                            <svg class="w-8 h-8 text-gold flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"></path>
+                            </svg>
+                            <p class="leading-tight text-slate-300">Siap berkontribusi secara akuntabel dan profesional dalam tim kehumasan & komunikasi.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Experience & Projects Section -->
+        <section id="pengalaman" class="py-20 bg-slate-50 px-6">
+            <div class="max-w-6xl mx-auto space-y-12">
+                <div class="text-center space-y-3">
+                    <h2 class="text-3xl md:text-4xl font-bold text-navy">Pengalaman & Proyek</h2>
+                    <p class="text-slate-600 text-sm max-w-xl mx-auto">Pengalaman praktis dalam kehumasan publik, pengelolaan informasi, dan proyek seni budaya.</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <!-- Card 1: Magang Diskominfo -->
+                    <div class="bg-white p-8 rounded-2xl border border-slate-200 shadow-sm hover:shadow-md hover:border-gold/50 transition-all flex flex-col justify-between group">
+                        <div class="space-y-4">
+                            <div class="flex justify-between items-start">
+                                <span class="px-3 py-1 bg-gold-light text-gold font-bold text-xs rounded-full border border-gold/30">2025</span>
+                                <span class="text-xs text-slate-400 font-medium flex items-center gap-1">
+                                    <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path></svg>
+                                    Medan, Sumatera Utara
+                                </span>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-bold text-navy group-hover:text-gold transition-colors">Magang Komunikasi Publik</h3>
+                                <p class="text-sm font-semibold text-slate-500">Dinas Kominfo Kota Medan</p>
+                            </div>
+                            <ul class="space-y-2.5 text-sm text-slate-600 leading-relaxed">
+                                <li class="flex items-start gap-2">
+                                    <span class="text-gold font-bold">•</span>
+                                    <span>Mengelola alur informasi publik via PPID untuk transparansi informasi publik instansi.</span>
+                                </li>
+                                <li class="flex items-start gap-2">
+                                    <span class="text-gold font-bold">•</span>
+                                    <span>Menyusun materi kehumasan (*government public relations*) dan teknik penulisan strategis.</span>
+                                </li>
+                                <li class="flex items-start gap-2">
+                                    <span class="text-gold font-bold">•</span>
+                                    <span>Melakukan pendokumentasian kegiatan instansi untuk koordinasi lintas sektor yang akuntabel.</span>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="pt-6 border-t border-slate-100 flex flex-wrap gap-2">
+                            <span class="text-xs bg-slate-100 text-slate-600 px-2.5 py-1 rounded-md font-medium">Public Relations</span>
+                            <span class="text-xs bg-slate-100 text-slate-600 px-2.5 py-1 rounded-md font-medium">PPID</span>
+                            <span class="text-xs bg-slate-100 text-slate-600 px-2.5 py-1 rounded-md font-medium">Dokumentasi</span>
+                        </div>
+                    </div>
+
+                    <!-- Card 2: Film Hata Tondi -->
+                    <div class="bg-white p-8 rounded-2xl border border-slate-200 shadow-sm hover:shadow-md hover:border-gold/50 transition-all flex flex-col justify-between group">
+                        <div class="space-y-4">
+                            <div class="flex justify-between items-start">
+                                <span class="px-3 py-1 bg-slate-100 text-slate-700 font-bold text-xs rounded-full border border-slate-200">2026</span>
+                                <span class="text-xs text-slate-400 font-medium flex items-center gap-1">
+                                    <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 4v16M17 4v16M3 8h18M3 16h18"></path></svg>
+                                    Proyek Kebudayaan
+                                </span>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-bold text-navy group-hover:text-gold transition-colors">Aktor Film "Hata Tondi"</h3>
+                                <p class="text-sm font-semibold text-slate-500">Produksi Film Independen</p>
+                            </div>
+                            <ul class="space-y-2.5 text-sm text-slate-600 leading-relaxed">
+                                <li class="flex items-start gap-2">
+                                    <span class="text-gold font-bold">•</span>
+                                    <span>Berperan aktif dalam seni peran film lokal yang mengusung narasi kebudayaan Batak/Sumut.</span>
+                                </li>
+                                <li class="flex items-start gap-2">
+                                    <span class="text-gold font-bold">•</span>
+                                    <span>Mengaplikasikan teknik komunikasi verbal, vokal, dan olah rasa interpersonal di depan kamera.</span>
+                                </li>
+                                <li class="flex items-start gap-2">
+                                    <span class="text-gold font-bold">•</span>
+                                    <span>Bekerja sama secara fleksibel dan adptif dengan sutradara, tim sinematografi, dan kru produksi.</span>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="pt-6 border-t border-slate-100 flex flex-wrap gap-2">
+                            <span class="text-xs bg-slate-100 text-slate-600 px-2.5 py-1 rounded-md font-medium">Seni Peran</span>
+                            <span class="text-xs bg-slate-100 text-slate-600 px-2.5 py-1 rounded-md font-medium">Komunikasi Interpersonal</span>
+                            <span class="text-xs bg-slate-100 text-slate-600 px-2.5 py-1 rounded-md font-medium">Kerja Sama Tim</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section id="keahlian" class="py-20 bg-white border-t border-slate-200/60 px-6">
+            <div class="max-w-5xl mx-auto space-y-12">
+                <div class="text-center space-y-3">
+                    <h2 class="text-3xl md:text-4xl font-bold text-navy">Keahlian & Sertifikasi</h2>
+                    <div class="w-16 h-1 bg-gold mx-auto rounded-full"></div>
+                </div>
+
+                <div class="space-y-8">
+                    <!-- Hard Skills -->
+                    <div class="space-y-4">
+                        <h3 class="text-sm font-bold text-navy uppercase tracking-wider text-center md:text-left flex items-center gap-2">
+                            <span class="w-2.5 h-2.5 rounded-full bg-navy"></span>
+                            Hard Skills (Keterampilan Teknis)
+                        </h3>
+                        <div class="flex flex-wrap justify-center md:justify-start gap-3">
+                            <span class="px-4 py-2.5 bg-slate-50 border border-slate-200 text-navy font-semibold text-sm rounded-xl hover:border-gold transition-colors">Riset Kualitatif</span>
+                            <span class="px-4 py-2.5 bg-slate-50 border border-slate-200 text-navy font-semibold text-sm rounded-xl hover:border-gold transition-colors">Analisis Data Teks & Kebahasaan</span>
+                            <span class="px-4 py-2.5 bg-slate-50 border border-slate-200 text-navy font-semibold text-sm rounded-xl hover:border-gold transition-colors">Government Public Relations</span>
+                            <span class="px-4 py-2.5 bg-slate-50 border border-slate-200 text-navy font-semibold text-sm rounded-xl hover:border-gold transition-colors">Penyusunan Laporan Kegiatan</span>
+                            <span class="px-4 py-2.5 bg-slate-50 border border-slate-200 text-navy font-semibold text-sm rounded-xl hover:border-gold transition-colors">Pengarsipan & Dokumentasi</span>
+                            <span class="px-4 py-2.5 bg-slate-50 border border-slate-200 text-navy font-semibold text-sm rounded-xl hover:border-gold transition-colors">Pengelolaan Informasi PPID</span>
+                        </div>
+                    </div>
+
+                    <!-- Soft Skills -->
+                    <div class="space-y-4">
+                        <h3 class="text-sm font-bold text-navy uppercase tracking-wider text-center md:text-left flex items-center gap-2">
+                            <span class="w-2.5 h-2.5 rounded-full bg-gold"></span>
+                            Soft Skills (Interpersonal)
+                        </h3>
+                        <div class="flex flex-wrap justify-center md:justify-start gap-3">
+                            <span class="px-4 py-2.5 bg-gold-light/60 border border-gold/30 text-gold-hover font-semibold text-sm rounded-xl hover:bg-gold-light transition-colors">Komunikasi Interpersonal</span>
+                            <span class="px-4 py-2.5 bg-gold-light/60 border border-gold/30 text-gold-hover font-semibold text-sm rounded-xl hover:bg-gold-light transition-colors">Kerja Sama Tim (Teamwork)</span>
+                            <span class="px-4 py-2.5 bg-gold-light/60 border border-gold/30 text-gold-hover font-semibold text-sm rounded-xl hover:bg-gold-light transition-colors">Kemampuan Adaptasi Tinggi</span>
+                            <span class="px-4 py-2.5 bg-gold-light/60 border border-gold/30 text-gold-hover font-semibold text-sm rounded-xl hover:bg-gold-light transition-colors">Koordinasi Lintas Sektor</span>
+                            <span class="px-4 py-2.5 bg-gold-light/60 border border-gold/30 text-gold-hover font-semibold text-sm rounded-xl hover:bg-gold-light transition-colors">Penulisan Strategis</span>
+                        </div>
+                    </div>
+
+                    <!-- Certifications & Languages Grid -->
+                    <div class="pt-6 border-t border-slate-200 grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div class="bg-slate-50 p-6 rounded-2xl border border-slate-200 space-y-3">
+                            <h4 class="text-xs font-bold text-gold uppercase tracking-wider">Sertifikasi Resmi</h4>
+                            <div class="space-y-2">
+                                <p class="font-bold text-navy text-base">Uji Kemahiran Berbahasa Indonesia (UKBI)</p>
+                                <p class="text-xs text-slate-500">Sertifikasi Kemahiran Bahasa Indonesia - 2026</p>
+                                <div class="pt-1">
+                                    <span class="text-xs bg-navy text-white px-2.5 py-1 rounded-md font-medium">SIAPkerja Certified</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="bg-slate-50 p-6 rounded-2xl border border-slate-200 space-y-3">
+                            <h4 class="text-xs font-bold text-gold uppercase tracking-wider">Kemampuan Bahasa</h4>
+                            <div class="space-y-3">
+                                <div>
+                                    <div class="flex justify-between text-xs font-bold text-navy mb-1">
+                                        <span>Bahasa Indonesia</span>
+                                        <span>Penutur Asli (Native)</span>
+                                    </div>
+                                    <div class="w-full bg-slate-200 rounded-full h-2">
+                                        <div class="bg-navy h-2 rounded-full w-full"></div>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="flex justify-between text-xs font-bold text-navy mb-1">
+                                        <span>Bahasa Inggris (English)</span>
+                                        <span>Kompetensi Kerja (Professional)</span>
+                                    </div>
+                                    <div class="w-full bg-slate-200 rounded-full h-2">
+                                        <div class="bg-gold h-2 rounded-full w-4/5"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="kontak" class="py-20 bg-navy text-white px-6">
+            <div class="max-w-4xl mx-auto text-center space-y-8">
+                <div class="space-y-3">
+                    <span class="text-gold font-bold uppercase text-xs tracking-widest">Mari Berkolaborasi</span>
+                    <h2 class="text-3xl md:text-4xl font-bold text-white">Hubungi Saya</h2>
+                    <p class="text-slate-300 text-sm md:text-base max-w-xl mx-auto leading-relaxed">
+                        Tertarik mendiskusikan peluang karir, kerjasama kehumasan, atau proyek komunikasi publik? Silakan hubungi saya secara langsung.
+                    </p>
+                </div>
+
+                <div class="flex flex-col sm:flex-row justify-center items-center gap-4 pt-4">
+                    <!-- Email Action Button -->
+                    <button onclick="copyToClipboard('bolashidayatmanurung@gmail.com', 'Alamat Email berhasil disalin!')" 
+                            class="w-full sm:w-auto inline-flex items-center justify-center gap-3 bg-white text-navy px-6 py-4 rounded-xl font-bold hover:bg-gold hover:text-white transition-all shadow-lg group">
+                        <svg class="w-5 h-5 text-gold group-hover:text-white transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                        </svg>
+                        <span>bolashidayatmanurung@gmail.com</span>
+                    </button>
+
+                    <!-- WhatsApp Direct Link -->
+                    <a href="https://wa.me/6282267830697" target="_blank" rel="noopener noreferrer" 
+                       class="w-full sm:w-auto inline-flex items-center justify-center gap-3 bg-navy-light border border-slate-700 text-white px-6 py-4 rounded-xl font-bold hover:border-gold hover:text-gold transition-all">
+                        <svg class="w-5 h-5 text-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path>
+                        </svg>
+                        <span>0822-6783-0697</span>
+                    </a>
+                </div>
+
+                <div class="pt-6 border-t border-slate-800/80 text-xs text-slate-400 flex flex-col sm:flex-row justify-center items-center gap-4">
+                    <span>📍 Domisili: Natumingka, Sumatera Utara, Indonesia</span>
+                    <span class="hidden sm:inline">•</span>
+                    <span>🎓 Alumni Universitas Negeri Medan</span>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-navy-dark text-slate-500 text-center py-6 text-xs border-t border-slate-900">
+        <div class="max-w-6xl mx-auto px-6 flex flex-col sm:flex-row justify-between items-center gap-2">
+            <p>&copy; 2026 Bolas Hidayat Manurung. All rights reserved.</p>
+            <p class="text-slate-600">Dibuat dengan HTML5 & Tailwind CSS</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript Logic -->
+    <script>
+        // Mobile Navigation Toggle
+        const menuBtn = document.getElementById('menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const openIcon = document.getElementById('menu-icon-open');
+        const closeIcon = document.getElementById('menu-icon-close');
+
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+            openIcon.classList.toggle('hidden');
+            closeIcon.classList.toggle('hidden');
+        });
+
+        // Close mobile menu when clicking menu links
+        document.querySelectorAll('#mobile-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+                openIcon.classList.remove('hidden');
+                closeIcon.classList.add('hidden');
+            });
+        });
+
+        // Copy to clipboard helper function (Replaces alert)
+        function copyToClipboard(text, customMessage) {
+            if (navigator.clipboard) {
+                navigator.clipboard.writeText(text).then(() => {
+                    showToast(customMessage || 'Teks berhasil disalin!');
+                }).catch(() => {
+                    fallbackCopy(text, customMessage);
+                });
+            } else {
+                fallbackCopy(text, customMessage);
+            }
+        }
+
+        function fallbackCopy(text, customMessage) {
+            const textArea = document.createElement("textarea");
+            textArea.value = text;
+            textArea.style.position = "fixed";
+            document.body.appendChild(textArea);
+            textArea.focus();
+            textArea.select();
+            try {
+                document.execCommand('copy');
+                showToast(customMessage || 'Teks berhasil disalin!');
+            } catch (err) {
+                showToast('Gagal menyalin teks');
+            }
+            document.body.removeChild(textArea);
+        }
+
+        // Toast display logic
+        function showToast(message) {
+            const toast = document.getElementById('toast');
+            const toastMsg = document.getElementById('toast-message');
+            toastMsg.textContent = message;
+            
+            toast.classList.remove('translate-y-20', 'opacity-0');
+            toast.classList.add('translate-y-0', 'opacity-100');
+
+            setTimeout(() => {
+                toast.classList.remove('translate-y-0', 'opacity-100');
+                toast.classList.add('translate-y-20', 'opacity-0');
+            }, 3000);
+        }
+    </script>
+</body>
+</html>
